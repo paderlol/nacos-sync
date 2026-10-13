@@ -1,7 +1,6 @@
 package com.alibaba.nacossync.it;
 
 import com.alibaba.nacos.api.naming.pojo.Instance;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -63,7 +62,6 @@ class TaskLifecycleIT extends AbstractSyncIT {
     }
 
     @Test
-    @Disabled("nacos-sync bug: /v1/task/deleteInBatch only deletes the task rows and never deregisters synced instances")
     void deletingTasksInBatchRemovesSyncedInstances() throws Exception {
         String service = uniqueName("TASK-BATCH");
         String ip = randomIp();

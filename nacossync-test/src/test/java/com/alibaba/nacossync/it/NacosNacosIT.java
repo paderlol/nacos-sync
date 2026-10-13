@@ -2,7 +2,6 @@ package com.alibaba.nacossync.it;
 
 import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.pojo.Instance;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -40,7 +39,6 @@ class NacosNacosIT extends AbstractSyncIT {
     }
 
     @Test
-    @Disabled("nacos-sync bug: Nacos->Nacos re-sync sends empty batchRegisterInstance (wipes the copies) and empty batchDeregisterInstance (throws), so copies flap every 3 s")
     void syncedInstanceStaysRegisteredWhileTaskRuns() throws Exception {
         String service = uniqueName("N2N-STABLE");
         String ip = randomIp();
@@ -109,7 +107,6 @@ class NacosNacosIT extends AbstractSyncIT {
     }
 
     @Test
-    @Disabled("nacos-sync bug: deleting a serviceName=ALL task posts DeleteAllSubTaskEvent, which has no subscriber, so synced instances stay")
     void deletingAllTaskRemovesSyncedInstances() throws Exception {
         String group = uniqueName("ALL-DEL-GROUP");
         String service = uniqueName("N2N-ALL-DEL");

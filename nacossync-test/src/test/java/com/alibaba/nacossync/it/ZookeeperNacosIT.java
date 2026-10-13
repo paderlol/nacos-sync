@@ -2,7 +2,6 @@ package com.alibaba.nacossync.it;
 
 import com.alibaba.nacos.api.naming.pojo.Instance;
 import org.apache.zookeeper.CreateMode;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.net.URLDecoder;
@@ -42,7 +41,6 @@ class ZookeeperNacosIT extends AbstractSyncIT {
     }
 
     @Test
-    @Disabled("nacos-sync bug: ZK->Nacos drops NODE_DELETED events (CuratorCache passes newData == null), so removed providers stay in Nacos")
     void removedDubboProviderLeavesNacos() throws Exception {
         String dubboInterface = uniqueInterface("ZkRemoval");
         String dubboGroup = uniqueName("ZK-GROUP");
@@ -59,7 +57,6 @@ class ZookeeperNacosIT extends AbstractSyncIT {
     }
 
     @Test
-    @Disabled("nacos-sync bug: ZK->Nacos registers each provider with batchRegisterInstance(List.of(instance)), which replaces the previous provider")
     void everyProviderOfAnInterfaceIsSyncedToNacos() throws Exception {
         String dubboInterface = uniqueInterface("ZkProviders");
         String dubboGroup = uniqueName("ZK-GROUP");
